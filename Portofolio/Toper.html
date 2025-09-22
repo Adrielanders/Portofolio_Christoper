@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Christopher Joshua Wiyahya — Computer Science</title>
+    <meta
+      name="description"
+      content="Portfolio untuk mahasiswa/graduate Computer Science: profil, keahlian, proyek, riset, dan kontak." />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content="Portfolio — Computer Science" />
+    <meta
+      property="og:description"
+      content="Portfolio untuk mahasiswa/graduate Computer Science: profil, keahlian, proyek, riset, dan kontak." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#22d3ee" />
+
+    <style>
+      /* ====== THEME ====== */
+      :root {
+        --bg: #0a0f1c; /* dark bg */
+        --panel: #0f172a; /* slate-900 */
+        --panel-2: #111827; /* gray-900 */
+        --text: #e5e7eb; /* gray-200 */
+        --muted: #94a3b8; /* slate-400 */
+        --brand: #22d3ee; /* cyan-400 */
+        --brand-2: #60a5fa; /* blue-400 */
+        --ok: #34d399; /* green-400 */
+        --warn: #f59e0b; /* amber-500 */
+        --chip: #0b1223; /* chip */
+        --ring: rgba(34, 211, 238, 0.35);
+        --shadow: 0 12px 34px rgba(2, 6, 23, 0.35);
+        --radius: 16px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f8fafc;
+          --panel: #ffffff;
+          --panel-2: #f1f5f9;
+          --text: #0f172a;
+          --muted: #475569;
+          --chip: #eef2ff;
+          --shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+        }
+      }
+      [data-theme="light"] {
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --panel-2: #f1f5f9;
+        --text: #0f172a;
+        --muted: #475569;
+        --chip: #eef2ff;
+        --shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(
+            1200px 800px at 10% -10%,
+            rgba(34, 211, 238, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at 110% 0%,
+            rgba(96, 165, 250, 0.12),
+            transparent 60%
+          ),
+          var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans";
+      }
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        width: min(1150px, 92vw);
+        margin: 0 auto;
+      }
+
+      /* ====== NAV ====== */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(1.2) blur(8px);
+        background: color-mix(in oklab, var(--bg) 85%, transparent);
+        border-bottom: 1px solid
+          color-mix(in oklab, var(--text) 10%, transparent);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .brand .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 0 0 6px var(--ring);
+      }
+      .nav-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+        background: var(--panel);
+        color: var(--text);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 34px rgba(2, 6, 23, 0.22);
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--brand), #60a5fa);
+        border: none;
+        color: #001018;
+        font-weight: 800;
+      }
+
+      /* ====== HERO ====== */
+      .hero {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 20px;
+        align-items: center;
+        padding: 30px 0 18px;
+      }
+      .avatar {
+        width: 170px;
+        aspect-ratio: 1/1;
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--panel), #0f1530);
+        padding: 6px;
+        box-shadow: var(--shadow);
+      }
+      .avatar-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 18px;
+        background: url("https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=600&auto=format&fit=crop")
+          center/cover;
+      }
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: clamp(26px, 3.4vw, 40px);
+        letter-spacing: 0.2px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .chip {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chip);
+        color: var(--text);
+        border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+        font-weight: 600;
+        font-size: 12.5px;
+      }
+
+      /* ====== LAYOUT ====== */
+      section {
+        margin: 26px 0 0;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ====== LIST & ROW ====== */
+      .list {
+        display: grid;
+        gap: 10px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: color-mix(in oklab, var(--panel) 86%, #000 0%);
+        border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+      }
+      .row .left {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        min-width: 0;
+      }
+      .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(120deg, var(--brand), var(--brand-2));
+        display: grid;
+        place-items: center;
+        color: #001018;
+        font-weight: 900;
+      }
+      .row h4 {
+        margin: 0;
+        font-size: 15px;
+      }
+      .row .sub {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      /* ====== PROJECT CARD ====== */
+      .proj {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .proj .thumb {
+        height: 160px;
+        border-radius: 14px;
+        background: #0f1530;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      }
+      .proj h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .proj .cta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 11.5px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: color-mix(in oklab, var(--chip) 85%, transparent);
+        border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      }
+
+      /* ====== CODE BLOCK / METRICS ====== */
+      .terminal {
+        background: var(--panel-2);
+        border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+        border-radius: 14px;
+        padding: 14px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: #e2e8f0;
+        position: relative;
+      }
+      .terminal::before {
+        content: "● ● ●";
+        letter-spacing: 6px;
+        color: #64748b;
+        position: absolute;
+        top: 8px;
+        left: 12px;
+      }
+      .k {
+        color: #60a5fa;
+      }
+      .v {
+        color: #34d399;
+      }
+      .c {
+        color: #94a3b8;
+      }
+
+      /* ====== FOOTER ====== */
+      footer {
+        padding: 36px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* ====== PRINT ====== */
+      @media print {
+        .nav,
+        .btn,
+        .hero .badges,
+        .proj .thumb {
+          display: none !important;
+        }
+        body {
+          background: #fff;
+        }
+        .card {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <span class="dot"></span
+          ><span id="brand-name">Christopher Joshua Wiyahya</span>
+        </div>
+        <div class="nav-actions">
+          <button class="btn" id="themeToggle" aria-label="Ganti tema">
+            🌗 Tema
+          </button>
+          <a class="btn primary" id="cvLink" href="#" download>⬇️ Unduh CV</a>
+          <a class="btn" id="ghBtn" href="#" target="_blank" rel="noopener"
+            >⭐ GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="hero">
+        <div class="avatar"><div class="avatar-inner" id="avatar"></div></div>
+        <div>
+          <h1 id="name">Christopher Joshua Wiyahya</h1>
+          <div class="muted" id="role">
+            Computer Science — Software Engineer / Backend / Full‑Stack
+          </div>
+          <div class="badges" id="badges"></div>
+        </div>
+      </section>
+
+      <!-- ABOUT + TECH STACK -->
+      <section class="grid grid-2">
+        <div class="card">
+          <h2 style="margin: 0 0 8px">Tentang</h2>
+          <p id="about" style="margin: 0"></p>
+          <div class="terminal" style="margin-top: 12px">
+            <pre class="c">// quick facts</pre>
+            <pre><span class="k">major</span>: <span class="v" id="fact-major">Computer Science</span>
+<span class="k">interests</span>: <span class="v" id="fact-int">Backend, Systems, Distributed, ML</span>
+<span class="k">stack</span>: <span class="v" id="fact-stack">Go · Node · Python · Postgres · Docker · AWS</span>
+<span class="k">currently</span>: <span class="v" id="fact-now">Building side projects & solving DSA</span></pre>
+          </div>
+        </div>
+        <div class="card">
+          <h2 style="margin: 0 0 10px">Tech Stack</h2>
+          <div class="tags" id="skills"></div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE / INTERNSHIP -->
+      <section class="card" style="margin-top: 16px">
+        <h2 style="margin: 0 0 12px">Pengalaman / Magang</h2>
+        <div class="list" id="experience"></div>
+      </section>
+
+      <!-- PROJECTS (Software/CS) -->
+      <section class="card" style="margin-top: 16px">
+        <h2 style="margin: 0 0 12px">Proyek Terpilih</h2>
+        <div class="grid grid-3" id="projects"></div>
+      </section>
+
+      <!-- OPEN SOURCE (auto fetch GitHub) -->
+      <section class="card" style="margin-top: 16px">
+        <h2 style="margin: 0 0 12px">Open Source & Recent Repos</h2>
+        <div class="list" id="repos">
+          <div class="sub">
+            Set GitHub username di data → akan menampilkan 6 repo terbaru
+            otomatis.
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION & ACHIEVEMENTS -->
+      <section class="grid grid-2">
+        <div class="card">
+          <h2 style="margin: 0 0 10px">Pendidikan</h2>
+          <div class="list" id="education"></div>
+        </div>
+        <div class="card">
+          <h2 style="margin: 0 0 10px">Pencapaian</h2>
+          <div class="list" id="awards"></div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="card" style="margin-top: 16px">
+        <h2 style="margin: 0 0 6px">Kontak</h2>
+        <p class="muted" id="contactHint">Email & sosial media.</p>
+        <div class="tags" id="socials"></div>
+      </section>
+
+      <footer class="container">
+        <footer>
+          &copy; <span id="year"></span>
+          <span id="foot-name">Nama Kandidat</span> · Dibuat untuk GitHub Pages.
+        </footer>
+      </footer>
+    </main>
+
+    <script>
+      // ====== DATA (EDIT BAGIAN INI) ======
+      const DATA = {
+        name: "Christopher Joshua Wiyahya",
+        role: "Digital Media Designer",
+        avatar: "../Portofolio/images/Christopher.jpg",
+        about:
+          "Lulusan dari Universitas Bina Nusantara, dengan pengalaman lebih dari 1 tahun sebagai Digital Media Designer. Berpengalaman dalam meng-handle sosial media perusahaan di bidang perbankan. Berkontribusi dalam aktivasi sosial media, meningkatkan views hingga 72,6 ribu dan engagement 57,9 ribu. Mahir dalam menggunakan aplikasi desain seperti adobe studio, figma, canva & capcut. Memiliki kemampuan belajar yang tinggi, adaptasi cepat, komunikasi yang efektif, dan motivasi kerja yang kuat",
+        location: "Jakarta, ID",
+        availability: "Open to Work",
+        github: "iWasKriss",
+        cvUrl: "#",
+        badges: ["Jakarta, ID", "Open to Work", "CS Graduate"],
+        facts: {
+          major: "Computer Science",
+          interests: "Digital Media Designer",
+          stack: "Adobe Studio · Canva · Python",
+          now: "Desain Grafis & Konten Kreator",
+        },
+        skills: [
+          "Adobe Studio",
+          "Canva",
+          "Figma",
+          "Adaptability",
+          "HTML",
+          "CSS",
+        ],
+        experience: [
+          {
+            company: "FinTech XYZ",
+            title: "Backend Engineer Intern",
+            period: "Feb 2025 — Jul 2025",
+            brief:
+              "Bangun service pembayaran (Go + Postgres), throughput +3.2x; tambah tracing OpenTelemetry, turunkan P99 latency -28%.",
+          },
+          {
+            company: "Campus Cloud Lab",
+            title: "Research Assistant",
+            period: "Sep 2024 — Jan 2025",
+            brief:
+              "Eksperimen konsistensi data pada sistem replikasi; implement Raft simplified pada Go.",
+          },
+        ],
+        projects: [
+          {
+            name: "Distributed Job Queue",
+            img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+            desc: "Job queue dengan worker pool, retry & backoff, idempotency key, observability (Prometheus + Grafana).",
+            tags: ["Go", "Redis", "Prometheus"],
+            repo: "#",
+            demo: "#",
+          },
+          {
+            name: "URL Shortener SaaS",
+            img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop",
+            desc: "Multi-tenant, rate limit, JWT auth, custom domain (ACME), CI/CD GitHub Actions.",
+            tags: ["Node", "Postgres", "Docker", "NGINX"],
+            repo: "#",
+            demo: "#",
+          },
+          {
+            name: "Image Search (CBIR)",
+            img: "https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1200&auto=format&fit=crop",
+            desc: "Content-based image retrieval dengan feature extractor CNN kecil.",
+            tags: ["Python", "PyTorch"],
+            repo: "#",
+            demo: "#",
+          },
+        ],
+        education: [
+          {
+            school: "Institut Teknologi Nusantara",
+            major: "S1 Informatika (GPA 3.78/4.00)",
+            year: "2021–2025",
+          },
+        ],
+        awards: [
+          {
+            title: "3rd Place — Competitive Programming Regional",
+            year: "2024",
+          },
+          { title: "Best Final Project — Distributed Systems", year: "2025" },
+        ],
+        socials: [
+          { name: "Email", url: "mailto:nadia@example.com" },
+          { name: "GitHub", url: "https://github.com/octocat" },
+          { name: "LinkedIn", url: "https://linkedin.com" },
+        ],
+      };
+
+      // ====== HELPERS ======
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) =>
+        Array.from(root.querySelectorAll(sel));
+
+      function render() {
+        $("#brand-name").textContent = DATA.name;
+        $("#name").textContent = DATA.name;
+        $("#foot-name").textContent = DATA.name;
+        $("#role").textContent = DATA.role;
+        $("#year").textContent = new Date().getFullYear();
+        if (DATA.avatar)
+          $("#avatar").style.backgroundImage = `url("${DATA.avatar}")`;
+        if (DATA.cvUrl) $("#cvLink").href = DATA.cvUrl;
+        if (DATA.github) $("#ghBtn").href = `https://github.com/${DATA.github}`;
+        $("#about").textContent = DATA.about;
+
+        const badges = DATA.badges?.length
+          ? DATA.badges
+          : [DATA.location, DATA.availability].filter(Boolean);
+        $("#badges").innerHTML = badges
+          .map((t) => `<span class="chip">${t}</span>`)
+          .join("");
+
+        $("#skills").innerHTML = DATA.skills
+          .map((s) => `<span class="tag">${s}</span>`)
+          .join("");
+
+        // quick facts
+        $("#fact-major").textContent = DATA.facts?.major || "Computer Science";
+        $("#fact-int").textContent = DATA.facts?.interests || "";
+        $("#fact-stack").textContent = DATA.facts?.stack || "";
+        $("#fact-now").textContent = DATA.facts?.now || "";
+
+        // pengalaman
+        $("#experience").innerHTML = DATA.experience
+          .map(
+            (e) => `
+        <div class="row">
+          <div class="left">
+            <div class="logo">${(e.company || "?")
+              .slice(0, 2)
+              .toUpperCase()}</div>
+            <div>
+              <h4>${e.title} — ${e.company}</h4>
+              <div class="sub">${e.period}</div>
+              <div class="sub">${e.brief || ""}</div>
+            </div>
+          </div>
+        </div>`
+          )
+          .join("");
+
+        // proyek
+        $("#projects").innerHTML = DATA.projects
+          .map(
+            (p) => `
+        <article class="proj">
+          <div class="thumb" style="background-image:url('${p.img}')"></div>
+          <h3>${p.name}</h3>
+          <p class="muted" style="margin:0 0 6px">${p.desc || ""}</p>
+          <div class="tags" style="margin-bottom:8px">${(p.tags || [])
+            .map((t) => `<span class="tag">${t}</span>`)
+            .join("")}</div>
+          <div class="cta">
+            ${
+              p.repo
+                ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener"></span>Repo</a>`
+                : ""
+            }
+            ${
+              p.demo
+                ? `<a class="btn primary" href="${p.demo}" target="_blank" rel="noopener">Demo</a>`
+                : ""
+            }
+          </div>
+        </article>
+      `
+          )
+          .join("");
+
+        // education & awards
+        $("#education").innerHTML = DATA.education
+          .map(
+            (ed) => `
+        <div class="row">
+          <div class="left">
+            <div class="logo">ED</div>
+            <div>
+              <h4>${ed.school}</h4>
+              <div class="sub">${ed.major} · ${ed.year}</div>
+            </div>
+          </div>
+        </div>`
+          )
+          .join("");
+
+        $("#awards").innerHTML = DATA.awards
+          .map(
+            (a) => `
+        <div class="row">
+          <div class="left">
+            <div class="logo">🏆</div>
+            <div>
+              <h4>${a.title}</h4>
+              <div class="sub">${a.year}</div>
+            </div>
+          </div>
+        </div>`
+          )
+          .join("");
+
+        // socials
+        $("#socials").innerHTML = DATA.socials
+          .map(
+            (s) =>
+              `<a class="btn" href="${s.url}" target="_blank" rel="noopener">${s.name}</a>`
+          )
+          .join("");
+      }
+
+      // ====== FETCH RECENT GITHUB REPOS ======
+      async function loadRepos() {
+        if (!DATA.github) return;
+        try {
+          const res = await fetch(
+            `https://api.github.com/users/${DATA.github}/repos?sort=updated&per_page=6`
+          );
+          if (!res.ok) throw new Error("GitHub API error");
+          const repos = await res.json();
+          const html = repos
+            .map(
+              (r) => `
+          <div class="row">
+            <div class="left">
+              <div class="logo">GH</div>
+              <div>
+                <h4>${r.name}</h4>
+                <div class="sub">★ ${r.stargazers_count} · ${
+                r.language || "—"
+              } · update: ${new Date(r.updated_at).toLocaleDateString()}</div>
+                <div class="sub">${r.description || ""}</div>
+              </div>
+            </div>
+            <div class="cta">
+              <a class="btn" href="${
+                r.html_url
+              }" target="_blank" rel="noopener">Repo</a>
+              ${
+                r.homepage
+                  ? `<a class="btn primary" href="${r.homepage}" target="_blank" rel="noopener">Demo</a>`
+                  : ""
+              }
+            </div>
+          </div>
+        `
+            )
+            .join("");
+          $("#repos").innerHTML =
+            html || '<div class="sub">Belum ada repositori publik.</div>';
+        } catch (e) {
+          $("#repos").innerHTML =
+            '<div class="sub">Gagal memuat repositori GitHub (rate limit?).</div>';
+        }
+      }
+
+      // ====== THEME TOGGLE ======
+      (function theme() {
+        const key = "theme";
+        const saved = localStorage.getItem(key);
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+        $("#themeToggle").addEventListener("click", () => {
+          const cur = document.documentElement.getAttribute("data-theme");
+          const next = cur === "light" ? "" : "light";
+          if (next) document.documentElement.setAttribute("data-theme", next);
+          else document.documentElement.removeAttribute("data-theme");
+          localStorage.setItem(key, next);
+        });
+      })();
+
+      render();
+      loadRepos();
+    </script>
+  </body>
+</html>
